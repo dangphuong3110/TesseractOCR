@@ -1,0 +1,24 @@
+.d-inline a,
+.d-inline span{
+    text-decoration: none;
+    color: #9ca3af;
+}
+
+.d-inline a:hover {
+    color: #1a202c;
+}
+
+.hidden {
+    display: none;
+}
+
+a.copy {
+    text-decoration: none;
+    color: black;
+}
+
+a.copy:hover {
+    text-decoration: underline;
+    color: rgba(213, 59, 53, 0.9);
+}
+
