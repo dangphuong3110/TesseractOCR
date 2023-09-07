@@ -1,10 +1,6 @@
 @extends('layouts.layout')
 
-@section('title', 'Option')
-
-@section('route-title')
-    {{ route('ocr.index') }}
-@endsection
+@section('title', 'Convert Image To Text')
 
 @section('content')
     @if($message = Session::get('success'))
@@ -19,12 +15,16 @@
     @endif
 
     <div class="wrapper">
+        <p class="fs-6">If you want to find out how to turn an image into a text document, you came to the right place. This free online tool allows you to convert from image to text.</p>
         <div class="img-test mt-2">
             <form action="{{ route('ocr.processImage') }}" method="post" enctype="multipart/form-data" id="form-img-input">
                 @csrf
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-4 mb-2">
+                        <div class="col-md-5 mb-2">
+                            <div class="overlay text-center rounded p-2 w-auto">
+                                <label for="imageInput" class="custom-file-upload rounded w-100 h-100 d-flex align-items-center justify-content-center"><i class="fa-solid fa-cloud-arrow-up"></i>Choose a file or drag it here.</label>
+                            </div>
                             <input type="file" name="img" id="imageInput" class="form-control fs-6">
                             <select class="form-select mt-2" name="language" required>
                                 <option selected disabled>Select language (Default: Vietnamese)</option>
@@ -37,7 +37,7 @@
                                 Submit
                             </button>
                         </div>
-                        <div class="text col-md-6">
+                        <div class="text col-md-5">
                             <div class="d-flex justify-content-between">
                                 <h2 class="text-danger fw-bold text-decoration-underline">Result:</h2>
                                 <a href="#" class="copy" id="btn-copy-text">
@@ -94,5 +94,33 @@
             beforeCopy.classList.add('hidden');
             afterCopy.classList.remove('hidden');
         });
+
+        const dropContainer = document.getElementById('main');
+
+        dropContainer.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropContainer.classList.add('active');
+        });
+
+        dropContainer.addEventListener('dragleave', () => {
+            dropContainer.classList.remove('active');
+        });
+
+        dropContainer.addEventListener('drop', e => {
+            e.preventDefault();
+            dropContainer.classList.remove('active');
+            const form = document.getElementById('form-img-input');
+            const imageInput = document.getElementById('imageInput');
+            imageInput.files = e.dataTransfer.files;
+            form.submit();
+        });
+
+        // function handleFile(file) {
+        //     const form = document.getElementById('form-img-input');
+        //     const imageInput = document.getElementById('imageInput');
+        //     imageInput.files = file;
+        //     console.log(file);
+        //     form.submit();
+        // }
     </script>
 @endsection

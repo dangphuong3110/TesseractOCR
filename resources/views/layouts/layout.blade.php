@@ -10,10 +10,9 @@
 </head>
 <body>
 
-<div class="container mt-5">
+<div class="container" id="main">
     <div class="table-contents pt-4">
         <div class="d-inline"><b class="fs-1 text-danger">@yield('title')</b></div>
-        <div class="ms-3 d-inline"><a href="#">Homepage</a> <span>/</span> <a href=@yield('route-title')>@yield('title')</a></div>
     </div>
 
     @yield('content')

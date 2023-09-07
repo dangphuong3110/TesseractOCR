@@ -22,3 +22,20 @@ a.copy:hover {
     color: rgba(213, 59, 53, 0.9);
 }
 
+input[type="file"] {
+    display: none;
+}
+
+.custom-file-upload {
+    border: 1px dashed #fff;
+    display: inline-block;
+    padding: initial;
+    cursor: pointer;
+    color: #fff;
+}
+
+.overlay {
+    background-color: #1a202c;
+    height: 175px;
+}
+
