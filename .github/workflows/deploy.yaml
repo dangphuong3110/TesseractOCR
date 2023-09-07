@@ -3,7 +3,7 @@ name: Deploy to cPanel
 on:
   push:
     branches:
-      - master # Adjust to match your branch name
+      - main # Adjust to match your branch name
 
 jobs:
   deploy:
@@ -23,7 +23,7 @@ jobs:
           username: "${{ secrets.USERNAME }}"
           port: "${{ secrets.PORT }}"
           key: "${{ secrets.SSH_PRIVATE_KEY }}"
-      
+
       - name: Deploy to server
         uses: appleboy/ssh-action@master
         with:
